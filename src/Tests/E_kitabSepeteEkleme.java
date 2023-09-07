@@ -123,4 +123,20 @@ public class E_kitabSepeteEkleme extends BaseDriver {
         WebElement mej = driver.findElement(By.xpath("//span[text()=' your order is confirmed. Thank you!']"));
         Assert.assertTrue(mej.isDisplayed());
     }
+
+    @Test
+    public void Test_ContactUs(){
+        driver.get("https://www.e-junkie.com/wiki/demo/paypal");
+        WebElement contactUs = driver.findElement(By.linkText("Contact Us"));
+        contactUs.click();
+        WebElement contacName = driver.findElement(By.id("contact_name"));
+        contacName.sendKeys("alim");
+        WebElement contacEmail = driver.findElement(By.id("contact_email"));
+        contacEmail.sendKeys("alim@gmail.com");
+        WebElement send = driver.findElement(By.xpath("//button[text()='Send']"));
+        send.click();
+        WebElement mesj = driver.findElement(By.xpath("//div[text()='Sorry, failed to send message']"));
+        System.out.println(mesj.getText());
+        Assert.assertTrue(mesj.isDisplayed());
+    }
 }
